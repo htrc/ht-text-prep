@@ -48,15 +48,7 @@ That's it! This library is written for Python 3.6+. For Python beginners, you'll
     ```python
     htrc_text_processing.normalize_txt_file_names('txt path or dir to txts') 
     ```
-  
-* Function: `clean_vol()`
 
-    Inputs:
-    
-    1. List of paths (strings) to directories that holds page files, one per volume
-    2. Path (string) to output directory where clean single text files will be stored after cleaning and concatenating pages together
-    
-    
 * Function: `check_vol()`
     
     Inputs: 
@@ -70,4 +62,17 @@ That's it! This library is written for Python 3.6+. For Python beginners, you'll
         
     ```python
   new_page_directory_list = htrc_text_processing.check_vol(page_directory_list, clean_vol_out_dir)
-    ```
+    ``` 
+
+* Function: `clean_vol()`
+
+    Inputs:
+    
+    1. List of paths (strings) to directories that holds page files, one per volume
+    2. Path (string) to output directory where clean single text files will be stored after cleaning and concatenating pages together
+    
+    Output 
+    
+    1. Singe text files, one for each volume, with running headers/footers removed
+    
+    
