@@ -61,7 +61,7 @@ That's it! This library is written for Python 3.6+. For Python beginners, you'll
     1. Page directory list which is not cleaned yet
         
     ```python
-  new_page_directory_list = htrc_text_processing.check_vol(page_directory_list, clean_vol_out_dir)
+  page_directory_list = htrc_text_processing.check_vol(page_directory_list, clean_vol_out_dir)
     ``` 
 
 * Function: `clean_vol()`
@@ -75,4 +75,7 @@ That's it! This library is written for Python 3.6+. For Python beginners, you'll
     
     1. Singe text files, one for each volume, with running headers/footers removed
     
-    
+    ```python
+    htrc_text_processing.clean_vol(page_directory_list, clean_vol_out_dir)
+    ```
+**Questions?** contact htrc-help@hathitrust.org
