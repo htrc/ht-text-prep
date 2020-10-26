@@ -73,9 +73,9 @@ That's it! This library is written for Python 3.6+. For Python beginners, you'll
     
     Output 
     
-    1. Singe text files, one for each volume, with running headers/footers removed
+    1. text files, one for each volume, with running headers/footers removed and pages concatenated
     
     ```python
     htrc_text_processing.clean_vol(page_directory_list, clean_vol_out_dir)
     ```
-**Questions?** contact htrc-help@hathitrust.org
+**Questions?** Contact htrc-help@hathitrust.org
