@@ -71,4 +71,3 @@ That's it! This library is written for Python 3.6+. For Python beginners, you'll
     ```python
   new_page_directory_list = htrc_text_processing.check_vol(page_directory_list, clean_vol_out_dir)
     ```
-### issues? Please file [here](https://github.com/ashan8k/htrc-text-processing/issues)
