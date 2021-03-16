@@ -2,23 +2,23 @@
 <a href="https://www.hathitrust.org/htrc"><img src="https://www.hathitrust.org/files/HTRC_logo.jpg" width="200" title="HathiTrust Reseach Center" alt="HTRC"></a>
 </p>
 
-# HTRC-Text-Processing Library
->  Tool to process  [pairtree](https://confluence.ucop.edu/display/Curation/PairTree) format data in 17 million digitized works at HathiTrust.
+# ht_text_prep Library
+>  Tool to process HathiTrust full-text data, which arrives in [pairtree](https://confluence.ucop.edu/display/Curation/PairTree) format.
 ## Table of Contents
-1. [About htrc-text-processing Library](#about)
+1. [About ht_text_prep Library](#about)
 2. [Installation](#install)
 3. [Usage](#usage)
 4. [Examples](#examples)
 
 
-## About `htrc-text-processing` Library<a name="about"></a>
+## About `ht_text_prep` Library<a name="about"></a>
 Detailed Description goes here.
 
 ## Installation <a name="install"></a>
 
 To install,
 ```bash
-pip install htrc-text-processing
+pip install ht_text_prep
 ```
 That's it! This library is written for Python 3.6+. For Python beginners, you'll need [pip](https://pip.pypa.io/en/stable/installing/).
   
@@ -36,7 +36,8 @@ That's it! This library is written for Python 3.6+. For Python beginners, you'll
 
 
     ```python
-    htrc_text_processing.get_zips('<path to pairtree parent/s>', 'path to output directory')
+    import ht_text_prep as htp
+    htp.get_zips('<path to pairtree parent/s>', 'path to output directory')
     ```
 * Function: `normalize_txt_file_names()`
 
@@ -46,7 +47,8 @@ That's it! This library is written for Python 3.6+. For Python beginners, you'll
 
 
     ```python
-    htrc_text_processing.normalize_txt_file_names('txt path or dir to txts') 
+    import ht_text_prep as htp
+    htp.normalize_txt_file_names('txt path or dir to txts') 
     ```
 
 * Function: `check_vol()`
@@ -61,7 +63,8 @@ That's it! This library is written for Python 3.6+. For Python beginners, you'll
     1. Page directory list which is not cleaned yet
         
     ```python
-  page_directory_list = htrc_text_processing.check_vol(page_directory_list, clean_vol_out_dir)
+    import ht_text_prep as htp
+  page_directory_list = htp.check_vol(page_directory_list, clean_vol_out_dir)
     ``` 
 
 * Function: `clean_vol()`
@@ -76,6 +79,7 @@ That's it! This library is written for Python 3.6+. For Python beginners, you'll
     1. text files, one for each volume, with running headers/footers removed and pages concatenated
     
     ```python
-    htrc_text_processing.clean_vol(page_directory_list, clean_vol_out_dir)
+    import ht_text_prep as htp
+    htp.clean_vol(page_directory_list, clean_vol_out_dir)
     ```
 **Questions?** Contact htrc-help@hathitrust.org
