@@ -2,8 +2,9 @@
 <a href="https://www.hathitrust.org/htrc"><img src="https://www.hathitrust.org/files/HTRC_logo.jpg" width="200" title="HathiTrust Reseach Center" alt="HTRC"></a>
 </p>
 
-# ht_text_prep Library
->  Tool to process HathiTrust full-text data, which arrives in [pairtree](https://confluence.ucop.edu/display/Curation/PairTree) format.
+# ht_text_prep
+Python library for processing HathiTrust full-text data, which arrives via rsync in [pairtree](https://confluence.ucop.edu/display/Curation/PairTree) format.
+
 ## Table of Contents
 1. [About ht_text_prep Library](#about)
 2. [Installation](#install)
