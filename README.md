@@ -201,7 +201,7 @@ out_dir = '/Users/rdubnic2/Desktop/clean_volumes/'
 to_be_cleaned = check_vol(data_dir, out_dir)
 
 clean_vol(to_be_cleaned, out_dir)
-	```
+```
 
 ### Function: `clean_vol(vol_dir_path_list: list, out_dir: str)`:
 
