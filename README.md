@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://www.hathitrust.org/htrc"><img src="https://wiki.htrc.illinois.edu/download/attachments/1769480/logo_googleForm.png?version=1&modificationDate=1584514252000&api=v2" width="400" title="HathiTrust Reseach Center" alt="HTRC"></a>
+<a href="https://www.hathitrust.org/htrc"><img src="https://wiki.htrc.illinois.edu/download/attachments/1769480/logo_googleForm.png?version=1&modificationDate=1584514252000&api=v2" width="600" title="HathiTrust Reseach Center" alt="HTRC"></a>
 </p>
 
 # ht_text_prep Library
@@ -26,19 +26,19 @@ That's it! This library is written for Python 3.6+. For Python beginners, you'll
 
 ## Usage <a name="usage"></a>
 
-#### Import the library for use:
+### Import the library for use:
     	
 ```python
 import ht_text_prep as htp
 ```
 
-#### Function: `get_zips(data_dir: str, output_dir: str, delete_zips=False)` 
+### Function: `get_zips(data_dir: str, output_dir: str, delete_zips=False)` 
 
 A function that will traverse the pairtree directory structure, find the zip files that contain full text data from HathiTrust, expand them, and move the files to an output directory.
 
 Returns a new directory with one folder of page text files per volume
 
-##### Inputs:
+#### Inputs:
 
 `data_dir`: path to folder holding the HathiTrust data to be cleaned/processed.
 
@@ -46,7 +46,7 @@ Returns a new directory with one folder of page text files per volume
 
 `delete_zips`: default False, provide value True to delete original zipfiles after expansion, False to keep them.
 
-##### Examples:
+#### Examples:
    		
 * Find and move zips for HathiTrust dataset, deleting zips after expanded:
 	
@@ -74,7 +74,7 @@ htp.get_zips(data_dir, output_dir, delete_zips=False)
 htp.get_zips('/Users/rdubnic2/Desktop/data_download', '/Users/rdubnic2/Desktop/data', delete_zips=False)
 ```
 
-#### Function: `normalize_txt_file_names(directory_path: str, prnt=False)`
+### Function: `normalize_txt_file_names(directory_path: str, prnt=False)`
 
 Given an input path to a single directory holding page text files, this function will normalize irregular page text file names in HathiTrust data, converting all page text files names to an 8-digit sequence number in format '00000001.txt' in ascending numerical order based on original file names. For example:
 
@@ -94,13 +94,13 @@ This function will also normalize jumps in page numbers greater than +1 between 
 	
 The function returns nothing explicitly, but yields normalized file names within the input directory.
     
-##### Inputs:
+#### Inputs:
    	
 `directory_path`: path to folder holding text files with filenames to be normalized
     
 `prnt`: parameter that determines if print messages are returned for each successfully normalized file. By default, this value is `False`.
 
-##### Examples:
+#### Examples:
 	
 * Normalize file names for one volume's text files in one directory, without print messages:
     	
@@ -121,7 +121,7 @@ for folder in top_dir:
 	htp.normalize_txt_file_names(folder, prnt=True)
 ```
     
-#### Function: `load_vol(path: str, num_pages: int)`
+### Function: `load_vol(path: str, num_pages: int)`
 
 A function to load a HathiTrust volume, in the format of a folder of text files, and parse the page structure in advance of removing running headers and footers. 
 
@@ -129,13 +129,13 @@ Returns a list of HtrcPage(*) objects (indexed lines of text), ready as input fo
 
 (*) See https://github.com/htrc/HTRC-Tools-RunningHeaders-Python/blob/develop/htrc/models.py
 	
-##### Inputs:
+#### Inputs:
 
 `path`: path to folder of text files for a given HathiTrust volume
 
 `num_pages`: the number of page text files in the directory for the volume
 
-##### Examples:
+#### Examples:
 
 * Load a HathiTrust volume using explicit parameters:
 	
@@ -156,7 +156,7 @@ num_pages = len(glob.glob(str(vol_path)+'/**'))
 load_vol(vol_path, num_pages)
 ```  	
 
-#### Function: `check_vol(vol_dir_path_list: list, clean_dir_path: str)`
+### Function: `check_vol(vol_dir_path_list: list, clean_dir_path: str)`
 	
 Function to check an input directory to identify which volumes have already been processed by clean_vol. 
 Intended as a helpful for very large worksets, where processing may be interrupted/stopped. This function
@@ -164,14 +164,14 @@ will return a list of volume paths that can be used to incrementally resume volu
 
 Returns a list of volume directory paths that still require processing.
 
-##### Inputs:
+#### Inputs:
 
 `vol_dir_path_list`: a list containing universal paths to directories containing HathiTrust page text
 files.
 
 `out_dir`: path to folder containing cleaned, concatenated text files.
 
-##### Examples:
+#### Examples:
 
 * Return a list of paths to volumes that have not yet been processed by `clean_vol`:
 	
@@ -209,14 +209,14 @@ Function to parse the page structure of a HathiTrust volume, and write out only 
 
 Returns nothing explicitly, but yields a single concatenated text file made up of input pages with running headers and footers removed, located in out_dir.
 
-##### Inputs:
+#### Inputs:
 
 `vol_dir_path_list`: a list containing universal paths to directories containing HathiTrust page text
 files.
 
 `out_dir`: path to folder to contain cleaned, concatenated text files.
 
-##### Examples:
+#### Examples:
 
 * Remove running headers/footers for a directory containing sub-directories holding page text:
 	
