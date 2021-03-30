@@ -2,7 +2,7 @@
 <a href="https://www.hathitrust.org/htrc"><img src="https://wiki.htrc.illinois.edu/download/attachments/1769480/logo_googleForm.png?version=1&modificationDate=1584514252000&api=v2" width="600" title="HathiTrust Reseach Center" alt="HTRC"></a>
 </p>
 
-# ht_text_prep Library
+# ht_text_prep
 
 ## Table of Contents
 1. [About ht_text_prep Library](#about)
