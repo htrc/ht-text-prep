@@ -141,9 +141,9 @@ Returns a list of HtrcPage(*) objects (indexed lines of text), ready as input fo
 * Load a HathiTrust volume using explicit parameters:
 	
 ```python
-import ht_text_prep as htrp
+import ht_text_prep as htp
 
-load_vol('/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k', 7)
+htp.load_vol('/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k', 7)
 ```
 
 * Load a HathiTrust volume using variables, generating a list of paths using `glob`:
@@ -154,7 +154,7 @@ import glob
 vol_path = '/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k'
 num_pages = len(glob.glob(str(vol_path)+'/**'))
 
-load_vol(vol_path, num_pages)
+htp.load_vol(vol_path, num_pages)
 ```  	
 
 ### Function: `check_vol(vol_dir_path_list: list, clean_dir_path: str)`
@@ -174,7 +174,7 @@ files.
 
 #### Examples:
 
-* Return a list of paths to volumes that have not yet been processed by `clean_vol`:
+* Return a list of paths to volumes that have not yet been processed by `clean_vol()`:
 	
 ```python
 import ht_text_prep as htp
@@ -185,12 +185,12 @@ data_dir = ['/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k',
 
 out_dir = '/Users/rdubnic2/Desktop/clean_volumes/'
 			
-check_vol(data_dir, out_dir)
+htp.check_vol(data_dir, out_dir)
 
 > ['/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
 ```
 	
-* Use `check_vol` as part of removing running headers/footers workflow, with `clean_vol`:
+* Use `check_vol()` as part of removing running headers/footers workflow, with `clean_vol()`:
 	
 ```python
 data_dir = ['/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k',
@@ -199,9 +199,9 @@ data_dir = ['/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k',
 
 out_dir = '/Users/rdubnic2/Desktop/clean_volumes/'
 			
-to_be_cleaned = check_vol(data_dir, out_dir)
+to_be_cleaned = htp.check_vol(data_dir, out_dir)
 
-clean_vol(to_be_cleaned, out_dir)
+htp.clean_vol(to_be_cleaned, out_dir)
 ```
 
 ### Function: `clean_vol(vol_dir_path_list: list, out_dir: str)`:
@@ -230,7 +230,7 @@ vol_dir = ['/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k',
 
 out_dir = '/Users/rdubnic2/Desktop/final_vols/'
 			
-clean_vol(vol_dir, out_dir)
+htp.clean_vol(vol_dir, out_dir)
 
 > 'Cleaned 3 volume(s)'
 ```
