@@ -78,18 +78,19 @@ htp.get_zips('/Users/rdubnic2/Desktop/data_download', '/Users/rdubnic2/Desktop/d
 
 Given an input path to a single directory holding page text files, this function will normalize irregular page text file names in HathiTrust data, converting all page text files names to an 8-digit sequence number in format '00000001.txt' in ascending numerical order based on original file names. For example:
 
-`0000000001.txt` becomes `00000001.txt`
-`ark+=13960=t3mw3px6k_00000001.txt` becomes `00000001.txt`
+	`0000000001.txt` becomes `00000001.txt`
+
+	`ark+=13960=t3mw3px6k_00000001.txt` becomes `00000001.txt`
         
 This function will also normalize jumps in page numbers greater than +1 between files sorted in ascending numerical order. For example, given this file list, names would be normalized to:
     
-`00000009.txt`  becomes  `00000009.txt`
+	`00000009.txt`  becomes  `00000009.txt`
 
-`00000010.txt`  becomes  `00000010.txt`
+	`00000010.txt`  becomes  `00000010.txt`
+	
+	`00000015.txt`  becomes  `00000011.txt`
 
-`00000015.txt`  becomes  `00000011.txt`
-
-`00000016.txt`  becomes  `00000012.txt`
+	`00000016.txt`  becomes  `00000012.txt`
 
 	
 The function returns nothing explicitly, but yields normalized file names within the input directory.
@@ -114,8 +115,8 @@ htp.normalize_txt_file_names(test_directory)
     	
 ```python
 top_dir = ['/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k',
-			'/Users/rdubnic2/Desktop/data_download/ark+=23200=t5mw3px1j',
-			'/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
+	'/Users/rdubnic2/Desktop/data_download/ark+=23200=t5mw3px1j',
+	'/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
 				
 for folder in top_dir:
 	htp.normalize_txt_file_names(folder, prnt=True)
@@ -179,8 +180,8 @@ files.
 import ht_text_prep as htp
 
 data_dir = ['/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k',
-					'/Users/rdubnic2/Desktop/data_download/ark+=23200=t5mw3px6k',
-					'/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
+	'/Users/rdubnic2/Desktop/data_download/ark+=23200=t5mw3px6k',
+	'/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
 
 out_dir = '/Users/rdubnic2/Desktop/clean_volumes/'
 			
@@ -193,8 +194,8 @@ check_vol(data_dir, out_dir)
 	
 ```python
 data_dir = ['/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k',
-			'/Users/rdubnic2/Desktop/data_download/ark+=23200=t5mw3px6k',
-			'/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
+	'/Users/rdubnic2/Desktop/data_download/ark+=23200=t5mw3px6k',
+	'/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
 
 out_dir = '/Users/rdubnic2/Desktop/clean_volumes/'
 			
@@ -224,14 +225,14 @@ files.
 import ht_text_prep as htp
 
 vol_dir = ['/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k',
-			'/Users/rdubnic2/Desktop/data_download/ark+=23200=t5mw3px1jk',
-			'/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
+	'/Users/rdubnic2/Desktop/data_download/ark+=23200=t5mw3px1jk',
+	'/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
 
 out_dir = '/Users/rdubnic2/Desktop/final_vols/'
 			
 clean_vol(vol_dir, out_dir)
 
-> Cleaned 3 volume(s)
+> 'Cleaned 3 volume(s)'
 ```
 
 **Questions?** Contact htrc-help@hathitrust.org
