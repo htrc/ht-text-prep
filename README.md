@@ -1,19 +1,19 @@
 <p align="center">
-<a href="https://www.hathitrust.org/htrc"><img src="https://www.hathitrust.org/files/HTRC_logo.jpg" width="200" title="HathiTrust Reseach Center" alt="HTRC"></a>
+<a href="https://www.hathitrust.org/htrc"><img src="https://wiki.htrc.illinois.edu/download/attachments/1769480/logo_googleForm.png?version=1&modificationDate=1584514252000&api=v2" width="400" title="HathiTrust Reseach Center" alt="HTRC"></a>
 </p>
 
 # ht_text_prep Library
-Python library to assist in processing HathiTrust full-text data outside of HathiTrust Research Center environments. This library helps manage the data that is stored and arrives in [pairtree](https://confluence.ucop.edu/display/Curation/PairTree) format.
-
-This library also has tools for finding and removing running headers and footers in a given volume, removing them, and concatenating page-level text files into a single text file per HathiTrust volume.
 
 ## Table of Contents
 1. [About ht_text_prep Library](#about)
 2. [Installation](#install)
 3. [Usage](#usage)
 
+
 ## About `ht_text_prep` Library<a name="about"></a>
-Detailed Description goes here.
+Python library to assist in processing HathiTrust full-text data outside of HathiTrust Research Center environments. This library helps manage the data that is stored and arrives in [pairtree](https://confluence.ucop.edu/display/Curation/PairTree) format.
+
+This library also has tools for finding and removing running headers and footers in a given volume, removing them, and concatenating page-level text files into a single text file per HathiTrust volume.
 
 ## Installation <a name="install"></a>
 
@@ -28,9 +28,9 @@ That's it! This library is written for Python 3.6+. For Python beginners, you'll
 
 #### Import the library for use:
     	
-	```python
-	import ht_text_prep as htp
-	```
+```python
+import ht_text_prep as htp
+```
 
 #### Function: `get_zips(data_dir: str, output_dir: str, delete_zips=False)` 
 
@@ -50,29 +50,29 @@ Returns a new directory with one folder of page text files per volume
    		
 * Find and move zips for HathiTrust dataset, deleting zips after expanded:
 	
-	```python
-	import ht_text_prep as htp
+```python
+import ht_text_prep as htp
 
-	data_dir = '/Users/rdubnic2/Desktop/data_download'
-	output_dir = '/Users/rdubnic2/Desktop/data'
-	
-	htp.get_zips(data_dir, output_dir, delete_zips=True)
-	```
+data_dir = '/Users/rdubnic2/Desktop/data_download'
+output_dir = '/Users/rdubnic2/Desktop/data'
+
+htp.get_zips(data_dir, output_dir, delete_zips=True)
+```
 	
 * Find and move zips for HathiTrust dataset, keeping original zips after expanded:
 	
-	```python
-	data_dir = '/Users/rdubnic2/Desktop/data_download'
-	output_dir = '/Users/rdubnic2/Desktop/data'
-	
-	htp.get_zips(data_dir, output_dir, delete_zips=False)
-	```
+```python
+data_dir = '/Users/rdubnic2/Desktop/data_download'
+output_dir = '/Users/rdubnic2/Desktop/data'
+
+htp.get_zips(data_dir, output_dir, delete_zips=False)
+```
 
 * Using paths rather than variables, find and move zips for HathiTrust dataset, keeping original zips after expanded:
 	
-	```python 
-	htp.get_zips('/Users/rdubnic2/Desktop/data_download', '/Users/rdubnic2/Desktop/data', delete_zips=False)
-	```
+```python 
+htp.get_zips('/Users/rdubnic2/Desktop/data_download', '/Users/rdubnic2/Desktop/data', delete_zips=False)
+```
 
 #### Function: `normalize_txt_file_names(directory_path: str, prnt=False)`
 
@@ -84,9 +84,13 @@ Given an input path to a single directory holding page text files, this function
 This function will also normalize jumps in page numbers greater than +1 between files sorted in ascending numerical order. For example, given this file list, names would be normalized to:
     
 `00000009.txt`  becomes  `00000009.txt`
+
 `00000010.txt`  becomes  `00000010.txt`
+
 `00000015.txt`  becomes  `00000011.txt`
+
 `00000016.txt`  becomes  `00000012.txt`
+
 	
 The function returns nothing explicitly, but yields normalized file names within the input directory.
     
@@ -100,22 +104,22 @@ The function returns nothing explicitly, but yields normalized file names within
 	
 * Normalize file names for one volume's text files in one directory, without print messages:
     	
-	```python 
-	import ht_text_prep as htp
-	test_directory = '/Users/username/Desktop/data_download/ark+=13960=t3mw3px6k'
-	htp.normalize_txt_file_names(test_directory)
-	```
+```python 
+import ht_text_prep as htp
+test_directory = '/Users/username/Desktop/data_download/ark+=13960=t3mw3px6k'
+htp.normalize_txt_file_names(test_directory)
+```
 
 * To normalize page file names for multiple volumes held in one top directory, use iteratively:
     	
-    ```python
-    top_dir = ['/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k',
- 				'/Users/rdubnic2/Desktop/data_download/ark+=23200=t5mw3px1j',
- 				'/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
- 					
-    for folder in top_dir:
-    	htp.normalize_txt_file_names(folder, prnt=True)
-    ```
+```python
+top_dir = ['/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k',
+			'/Users/rdubnic2/Desktop/data_download/ark+=23200=t5mw3px1j',
+			'/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
+				
+for folder in top_dir:
+	htp.normalize_txt_file_names(folder, prnt=True)
+```
     
 #### Function: `load_vol(path: str, num_pages: int)`
 
@@ -135,22 +139,22 @@ Returns a list of HtrcPage(*) objects (indexed lines of text), ready as input fo
 
 * Load a HathiTrust volume using explicit parameters:
 	
-	```python
-	import ht_text_prep as htrp
-	
-	load_vol('/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k', 7)
-	```
+```python
+import ht_text_prep as htrp
+
+load_vol('/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k', 7)
+```
 
 * Load a HathiTrust volume using variables, generating a list of paths using `glob`:
-	
-	```python
-	import glob
-	
-	vol_path = '/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k'
-	num_pages = len(glob.glob(str(vol_path)+'/**'))
-	
-	load_vol(vol_path, num_pages)
-	```  	
+
+```python
+import glob
+
+vol_path = '/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k'
+num_pages = len(glob.glob(str(vol_path)+'/**'))
+
+load_vol(vol_path, num_pages)
+```  	
 
 #### Function: `check_vol(vol_dir_path_list: list, clean_dir_path: str)`
 	
@@ -171,32 +175,32 @@ files.
 
 * Return a list of paths to volumes that have not yet been processed by `clean_vol`:
 	
-	```python
-	import ht_text_prep as htp
-	
-	data_dir = ['/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k',
-						'/Users/rdubnic2/Desktop/data_download/ark+=23200=t5mw3px6k',
-						'/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
-	
-	out_dir = '/Users/rdubnic2/Desktop/clean_volumes/'
-				
-	check_vol(data_dir, out_dir)
-	
-	> ['/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
-	```
+```python
+import ht_text_prep as htp
+
+data_dir = ['/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k',
+					'/Users/rdubnic2/Desktop/data_download/ark+=23200=t5mw3px6k',
+					'/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
+
+out_dir = '/Users/rdubnic2/Desktop/clean_volumes/'
+			
+check_vol(data_dir, out_dir)
+
+> ['/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
+```
 	
 * Use `check_vol` as part of removing running headers/footers workflow, with `clean_vol`:
 	
-	```python
-	data_dir = ['/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k',
-				'/Users/rdubnic2/Desktop/data_download/ark+=23200=t5mw3px6k',
-				'/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
-	
-	out_dir = '/Users/rdubnic2/Desktop/clean_volumes/'
-				
-	to_be_cleaned = check_vol(data_dir, out_dir)
-	
-	clean_vol(to_be_cleaned, out_dir)
+```python
+data_dir = ['/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k',
+			'/Users/rdubnic2/Desktop/data_download/ark+=23200=t5mw3px6k',
+			'/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
+
+out_dir = '/Users/rdubnic2/Desktop/clean_volumes/'
+			
+to_be_cleaned = check_vol(data_dir, out_dir)
+
+clean_vol(to_be_cleaned, out_dir)
 	```
 
 ### Function: `clean_vol(vol_dir_path_list: list, out_dir: str)`:
@@ -216,17 +220,18 @@ files.
 
 * Remove running headers/footers for a directory containing sub-directories holding page text:
 	
-	```python
-	import ht_text_prep as htp
-	
-	vol_dir = ['/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k',
-				'/Users/rdubnic2/Desktop/data_download/ark+=23200=t5mw3px1jk',
-				'/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
-	
-	out_dir = '/Users/rdubnic2/Desktop/final_vols/'
-				
-	clean_vol(vol_dir, out_dir)
-	
-	> Cleaned 3 volume(s)
-	```
+```python
+import ht_text_prep as htp
+
+vol_dir = ['/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k',
+			'/Users/rdubnic2/Desktop/data_download/ark+=23200=t5mw3px1jk',
+			'/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
+
+out_dir = '/Users/rdubnic2/Desktop/final_vols/'
+			
+clean_vol(vol_dir, out_dir)
+
+> Cleaned 3 volume(s)
+```
+
 **Questions?** Contact htrc-help@hathitrust.org
