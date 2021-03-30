@@ -9,7 +9,6 @@ Python library for processing HathiTrust full-text data, which arrives via rsync
 1. [About ht_text_prep Library](#about)
 2. [Installation](#install)
 3. [Usage](#usage)
-4. [Examples](#examples)
 
 
 ## About `ht_text_prep` Library<a name="about"></a>
