@@ -3,12 +3,14 @@
 </p>
 
 # ht_text_prep Library
->  Tool to process HathiTrust full-text data, which arrives in [pairtree](https://confluence.ucop.edu/display/Curation/PairTree) format.
+Python library to assit in processing HathiTrust full-text data outside of HathiTrust Research Center environments. This library helps manage the data that is stored and arrives in [pairtree](https://confluence.ucop.edu/display/Curation/PairTree) format.
+
+This library also has tools for finding and removing running headers and footers in a given volume, removing them, and concatenating page-level text files into a single text file per HathiTrust volume.
+
 ## Table of Contents
 1. [About ht_text_prep Library](#about)
 2. [Installation](#install)
 3. [Usage](#usage)
-
 
 ## About `ht_text_prep` Library<a name="about"></a>
 Detailed Description goes here.
