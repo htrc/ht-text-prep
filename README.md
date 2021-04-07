@@ -11,7 +11,7 @@
 
 
 ## About `ht_text_prep` Library<a name="about"></a>
-Python library to assist in processing HathiTrust full-text data outside of HathiTrust Research Center environments. This library helps manage the data that is stored and arrives in [pairtree](https://confluence.ucop.edu/display/Curation/PairTree) format.
+Python library to assist in processing HathiTrust full-text data received as part of HathiTrust's [dataset request process](https://www.hathitrust.org/datasets). This code is not intended for use on data within HathiTrust Research Center environments. This library helps manage the data that is stored and arrives in [pairtree](https://confluence.ucop.edu/display/Curation/PairTree) format.
 
 This library also has tools for finding and removing running headers and footers in a given volume, removing them, and concatenating page-level text files into a single text file per HathiTrust volume.
 
