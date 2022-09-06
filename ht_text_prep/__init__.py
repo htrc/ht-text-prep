@@ -382,12 +382,20 @@ def does_clean_one_vol(vol_dir_path: str, out_dir: str):
         shutil.move(clean_file_path, out_dir)
     return print(f"Cleaned 1 volume(s)")
 
-def clean_vol(vol_dir_path: str or list, clean_dir_path: str):
+def clean_vol(vol_dir_path: str | list, clean_dir_path: str):
     # Function to parse the page structure of every HathiTrust volume in a supplied directory and write out only the
     # page body text, removing running headers and footers. 
     
     # Returns nothing explicitly, but yields a single concatenated text file made up of input pages with 
     # running headers and footers removed, located in out_dir.
+    
+    # NOTE: if the supplied vol_dir_path is a parent directory (a folder containing other files), this function checks 
+    # to see if the enclosed data are “.txt” files. If so, it assumes the user has supplied a single HathiTrust volume. 
+    # That volume is then processed. If subdirectories are not “.txt” files, clean_vol() transforms them into a list of 
+    # paths and removes running headers/footers, concatenates the pages, and saves them to the outdir. If the supplied 
+    # vol_dir_path is already a list of file paths, that list is sent to does_clean() to remove running headers/footers, 
+    # concatenate the pages, and save them to the outdir.
+
     
     # Parameters
     # ----------
@@ -441,42 +449,7 @@ def clean_vol(vol_dir_path: str or list, clean_dir_path: str):
   
 
 def check_list_of_vols(vol_dir_path_list: list, clean_dir_path: str):
-    # called by check_vols to check if a list of subdirectories containing hathitrust volumes have been cleaned by clean_vol.
-    
-    assert isinstance(vol_dir_path_list,
-                      list), 'clean_vol() 1st parameter vol_dir_path_list="{}" not of <class "list">'.format(
-        vol_dir_path_list)
-    assert isinstance(clean_dir_path, str), 'clean_vol() 2nd parameter out_dir="{}" not of <class "str">'.format(
-        clean_dir_path)
-    print(f"There are {len(vol_dir_path_list)} total volumes.")
-    clean_volume_list = glob.glob(clean_dir_path + '/*.txt')
-    list_clean_files = []
-    for file in clean_volume_list:
-        p = Path(file)
-        list_clean_files.append(p.name)
-    count = 0
-    need_to_clean = []
-    for path in vol_dir_path_list:
-        p = Path(path)
-        ps = (p.name + ".txt")
-        if ps not in list_clean_files:
-            need_to_clean.append(str(p))
-        else:
-            count += 1
-
-    print(f"{count} volumes have already been cleaned.")
-
-    if need_to_clean:
-        print("Following Directories need to be cleaned")
-        print(CRED + "\n".join(need_to_clean) + CEND)
-
-    return need_to_clean
-
-
-
-
-def check_vol(vol_dir_path: list or str, clean_dir_path: str):
-    # Function to identify which volumes in a given parent directory or list of subdirectories have already been 
+    # Function to identify which volumes in a given list of subdirectories have already been 
     # processed by clean_vol. Helpful for very large worksets where processing may be interrupted/stopped. 
     # This function will return a list of volume paths that can be used to incrementally resume volume processing.
     
@@ -515,7 +488,48 @@ def check_vol(vol_dir_path: list or str, clean_dir_path: str):
     #   out_dir = '/Users/rdubnic2/Desktop/clean_volumes/'
     #   to_be_cleaned = check_vol(data_dir, out_dir)
     #   clean_vol(to_be_cleaned, out_dir)
+    
+    assert isinstance(vol_dir_path_list,
+                      list), 'clean_vol() 1st parameter vol_dir_path_list="{}" not of <class "list">'.format(
+        vol_dir_path_list)
+    assert isinstance(clean_dir_path, str), 'clean_vol() 2nd parameter out_dir="{}" not of <class "str">'.format(
+        clean_dir_path)
+    print(f"There are {len(vol_dir_path_list)} total volumes.")
+    clean_volume_list = glob.glob(clean_dir_path + '/*.txt')
+    list_clean_files = []
+    for file in clean_volume_list:
+        p = Path(file)
+        list_clean_files.append(p.name)
+    count = 0
+    need_to_clean = []
+    for path in vol_dir_path_list:
+        p = Path(path)
+        ps = (p.name + ".txt")
+        if ps not in list_clean_files:
+            need_to_clean.append(str(p))
+        else:
+            count += 1
 
+    print(f"{count} volumes have already been cleaned.")
+
+    if need_to_clean:
+        print("Following Directories need to be cleaned")
+        print(CRED + "\n".join(need_to_clean) + CEND)
+
+    return need_to_clean
+
+
+
+
+def check_vol(vol_dir_path: list | str, clean_dir_path: str):
+    # Function to verify input for check_list_of_vols. If vol_dir_path is a parent directory of multiple volumes, 
+    # check_vol will generate a list of subdirectoreis and feed it to check_list_of_vols. If it is already a list 
+    # of subdirectories, this list is given to check_list_of_vols.
+    #
+    # NOTE: This function does not actually check to see if a volume’s headers and footers have been removed and 
+    # pages concatenated. It merely checks to see if a file with the same name is in clean_dir_path. Therefore, 
+    # it’s important to be consistent with how you name your HathiTrust volumes and where you save them.
+    
     subdirs = []
     try:
         vol_dir_path = Path(vol_dir_path)
