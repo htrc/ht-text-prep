@@ -74,7 +74,7 @@ htp.get_zips(data_dir, output_dir, delete_zips=False)
 htp.get_zips('/Users/rdubnic2/Desktop/data_download', '/Users/rdubnic2/Desktop/data', delete_zips=False)
 ```
 
-### Function: `normalize_txt_file_names(directory_path: str, prnt=False)`
+### Function: `clean_txt_file_names(file_name: str):`
 
 Given an input path to a single directory holding page text files, this function will normalize irregular page text file names in HathiTrust data, converting all page text files names to an 8-digit sequence number in format '00000001.txt' in ascending numerical order based on original file names. For example:
 
@@ -97,9 +97,7 @@ The function returns nothing explicitly, but yields normalized file names within
     
 #### Inputs:
    	
-`directory_path`: path to folder holding text files with filenames to be normalized
-    
-`prnt`: parameter that determines if print messages are returned for each successfully normalized file. By default, this value is `False`.
+`file_name`: path to text file with a filename to be normalized
 
 #### Examples:
 	
@@ -157,7 +155,7 @@ num_pages = len(glob.glob(str(vol_path)+'/**'))
 htp.load_vol(vol_path, num_pages)
 ```  	
 
-### Function: `check_vol(vol_dir_path_list: list, clean_dir_path: str)`
+### Function: `check_list_of_vols(vol_dir_path_list: list, clean_dir_path: str)`
 	
 Function to check an input directory to identify which volumes have already been processed by clean_vol. 
 Intended as a helpful for very large worksets, where processing may be interrupted/stopped. This function
@@ -204,18 +202,31 @@ to_be_cleaned = htp.check_vol(data_dir, out_dir)
 htp.clean_vol(to_be_cleaned, out_dir)
 ```
 
-### Function: `clean_vol(vol_dir_path_list: list, out_dir: str)`:
+### Function: `clean_vol(vol_dir_path: str | list, out_dir: str)`:
 
 Function to parse the page structure of a HathiTrust volume, and write out only the page body text, removing running headers and footers.
 
 Returns nothing explicitly, but yields a single concatenated text file made up of input pages with running headers and footers removed, located in out_dir.
 
+# Function to parse the page structure of every HathiTrust volume in a supplied directory and write out only the
+    # page body text, removing running headers and footers. 
+    
+    # Returns nothing explicitly, but yields a single concatenated text file made up of input pages with 
+    # running headers and footers removed, located in out_dir.
+    
+    # NOTE: if the supplied vol_dir_path is a parent directory (a folder containing other files), this function checks 
+    # to see if the enclosed data are “.txt” files. If so, it assumes the user has supplied a single HathiTrust volume. 
+    # That volume is then processed. If subdirectories are not “.txt” files, clean_vol() transforms them into a list of 
+    # paths and removes running headers/footers, concatenates the pages, and saves them to the outdir. If the supplied 
+    # vol_dir_path is already a list of file paths, that list is sent to does_clean() to remove running headers/footers, 
+    # concatenate the pages, and save them to the outdir.
+
 #### Inputs:
 
-`vol_dir_path_list`: a list containing universal paths to directories containing HathiTrust page text
+`vol_dir_path`: a string path to a directory or a list containing strings of universal paths to directories containing HathiTrust page text
 files.
 
-`out_dir`: path to folder to contain cleaned, concatenated text files.
+`out_dir`: string path to folder to contain cleaned, concatenated text files.
 
 #### Examples:
 
