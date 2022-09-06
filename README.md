@@ -101,7 +101,7 @@ The function returns nothing explicitly, but yields normalized file names within
 
 #### Examples:
 	
-* Normalize file names for one volume's text files in one directory, without print messages:
+* Normalize file names for one volume's text files in one directory:
     	
 ```python 
 import ht_text_prep as htp
@@ -117,7 +117,7 @@ top_dir = ['/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k',
 	'/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
 				
 for folder in top_dir:
-	htp.clean_txt_file_names(folder, prnt=True)
+	htp.clean_txt_file_names(folder)
 ```
     
 ### Function: `load_vol(path: str, num_pages: int)`
