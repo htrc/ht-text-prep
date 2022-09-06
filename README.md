@@ -155,7 +155,7 @@ num_pages = len(glob.glob(str(vol_path)+'/**'))
 htp.load_vol(vol_path, num_pages)
 ```  	
 
-### Function: `check_list_of_vols(vol_dir_path_list: list, clean_dir_path: str)`
+### Function: `check_vol(vol_dir_path: str | list, clean_dir_path: str)`
 	
 Function to check an input directory to identify which volumes have already been processed by clean_vol. 
 Intended as a helpful for very large worksets, where processing may be interrupted/stopped. This function
@@ -165,7 +165,7 @@ Returns a list of volume directory paths that still require processing.
 
 #### Inputs:
 
-`vol_dir_path_list`: a list containing universal paths to directories containing HathiTrust page text
+`vol_dir_path`: a string of a directory containing page text files or a list containing string universal paths to directories containing HathiTrust page text
 files.
 
 `out_dir`: path to folder containing cleaned, concatenated text files.
