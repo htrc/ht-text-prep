@@ -106,7 +106,7 @@ The function returns nothing explicitly, but yields normalized file names within
 ```python 
 import ht_text_prep as htp
 test_directory = '/Users/username/Desktop/data_download/ark+=13960=t3mw3px6k'
-htp.normalize_txt_file_names(test_directory)
+htp.clean_txt_file_names(test_directory)
 ```
 
 * To normalize page file names for multiple volumes held in one top directory, use iteratively:
@@ -117,7 +117,7 @@ top_dir = ['/Users/rdubnic2/Desktop/data_download/ark+=13960=t3mw3px6k',
 	'/Users/rdubnic2/Desktop/data_download/ark+=53960=t4mp1qr7x']
 				
 for folder in top_dir:
-	htp.normalize_txt_file_names(folder, prnt=True)
+	htp.clean_txt_file_names(folder, prnt=True)
 ```
     
 ### Function: `load_vol(path: str, num_pages: int)`
