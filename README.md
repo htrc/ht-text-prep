@@ -203,23 +203,11 @@ htp.clean_vol(to_be_cleaned, out_dir)
 ```
 
 ### Function: `clean_vol(vol_dir_path: str | list, out_dir: str)`:
-
-Function to parse the page structure of a HathiTrust volume, and write out only the page body text, removing running headers and footers.
-
-Returns nothing explicitly, but yields a single concatenated text file made up of input pages with running headers and footers removed, located in out_dir.
-
-# Function to parse the page structure of every HathiTrust volume in a supplied directory and write out only the
-    # page body text, removing running headers and footers. 
+Function to parse the page structure of every HathiTrust volume in a supplied directory and write out only the page body text, removing running headers and footers. 
     
-    # Returns nothing explicitly, but yields a single concatenated text file made up of input pages with 
-    # running headers and footers removed, located in out_dir.
+Returns nothing explicitly, but yields a single concatenated text file made up of input pages with running headers and footers removed, located in `out_dir`.
     
-    # NOTE: if the supplied vol_dir_path is a parent directory (a folder containing other files), this function checks 
-    # to see if the enclosed data are “.txt” files. If so, it assumes the user has supplied a single HathiTrust volume. 
-    # That volume is then processed. If subdirectories are not “.txt” files, clean_vol() transforms them into a list of 
-    # paths and removes running headers/footers, concatenates the pages, and saves them to the outdir. If the supplied 
-    # vol_dir_path is already a list of file paths, that list is sent to does_clean() to remove running headers/footers, 
-    # concatenate the pages, and save them to the outdir.
+NOTE: if the supplied vol_dir_path is a parent directory (a folder containing other files), this function checks to see if the enclosed data are “.txt” files. If so, it assumes the user has supplied a single HathiTrust volume. That volume is then processed. If subdirectories are not “.txt” files, `clean_vol()` transforms them into a list of paths and removes running headers/footers, concatenates the pages, and saves them to the `outdir`. If the supplied `vol_dir_path` is already a list of file paths, that list is sent to `does_clean()` to remove running headers/footers, concatenate the pages, and save them to the outdir.
 
 #### Inputs:
 
