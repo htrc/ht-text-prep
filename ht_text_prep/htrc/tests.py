@@ -1,8 +1,12 @@
+# tests no longer work. They don't look for correct directory (9/22)
+# need to fix for an updated version.
+
 import unittest
 from typing import List
 
-from htrc_text_processing.htrc import HtrcPage
-from htrc_text_processing.htrc import parse_page_structure, clean_text, levenshtein
+from htrc_text_processing.htrc.models import HtrcPage
+from htrc_text_processing.htrc.utils import clean_text, levenshtein
+from htrc_text_processing.htrc.runningheaders import parse_page_structure
 
 
 class TestRunningHeaders(unittest.TestCase):

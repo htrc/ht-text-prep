@@ -49,14 +49,14 @@ Returns a new directory with one folder of page text files per volume
 #### Examples:
    		
 * Find and move zips for HathiTrust dataset, deleting zips after expanded:
-	
+
 ```python
 import ht_text_prep as htp
 
 data_dir = '/Users/rdubnic2/Desktop/data_download'
 output_dir = '/Users/rdubnic2/Desktop/data'
 
-htp.get_zips(data_dir, output_dir, delete_zips=True)
+htp.get_zips(data_dir, output_dir)
 ```
 	
 * Find and move zips for HathiTrust dataset, keeping original zips after expanded:

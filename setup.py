@@ -5,14 +5,14 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='htrc-text-processing',  
-    version='0.0.2',
+    version='1.1.0',
     #scripts=['htrc-text-processing'] ,
-    author="Ashan Liyanage, Ryan Dubnicek",
-    author_email="ashan8k@gmail.com",
+    author="Ashan Liyanage, Elizabeth Schwartz, Daniel Evans, Ryan Dubnicek",
+    author_email=" feedback@issues.hathitrust.org",
     description="Text processing and analysis for HathiTrust Research Center",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ashan8k/htrc-text-processing",
+    url="https://github.com/htrc/ht-text-prep",
     packages=setuptools.find_packages(),
     classifiers=[
          "Programming Language :: Python :: 3",
