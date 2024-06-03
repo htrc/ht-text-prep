@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name='htrc-text-processing',  
+    name='ht-text-prep',  
     version='1.1',
     #scripts=['htrc-text-processing'] ,
     author="Ashan Liyanage, Ryan Dubnicek, Yuerong Hu",
