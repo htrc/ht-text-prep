@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='htrc-text-processing',  
-    version='0.0.2',
+    version='1.1',
     #scripts=['htrc-text-processing'] ,
-    author="Ashan Liyanage, Ryan Dubnicek",
-    author_email="ashan8k@gmail.com",
+    author="Ashan Liyanage, Ryan Dubnicek, Yuerong Hu",
+    author_email="rdubnic2@illinois.edu",
     description="Text processing and analysis for HathiTrust Research Center",
     long_description=long_description,
     long_description_content_type="text/markdown",
