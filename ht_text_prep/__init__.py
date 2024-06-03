@@ -34,7 +34,6 @@ def unzip_file(file_name):
 def error_message(msg):
     sys.exit(CRED + msg + CEND)
 
-
 def get_zips(data_dir: str, output_dir: str, delete_zips=False):
     # A function that will traverse the pairtree directory structure, find the zip files 
     # that contain full text data from HathiTrust, expand them, and move the files to an output directory.
